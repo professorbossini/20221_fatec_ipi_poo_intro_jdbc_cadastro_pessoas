@@ -25,6 +25,12 @@ public class Pessoa {
         conexao.close();
     }
 
+    public Pessoa (String nome, String fone, String email){
+        setNome(nome);
+        setFone(fone);
+        setEmail(email);
+    }
+
     public int getCodigo() {
         return codigo;
     }
