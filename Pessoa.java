@@ -66,6 +66,15 @@ public class Pessoa {
         }
     }
 
+    public void listar(){
+        //1. Especificar o comando SQL (SELECT)
+        //2. Abrir uma conexão (usando try-with-resources)
+        //3. Preparar o comando
+        //4. Substituir os eventuais placeholders
+        //5. Executar o comando
+        //6. Tratar o resultado (pois ele é uma tabela)
+    }
+
     public Pessoa (String nome, String fone, String email){
         this(0, nome, fone, email);    
     }
