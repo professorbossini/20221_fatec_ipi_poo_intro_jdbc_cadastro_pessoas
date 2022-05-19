@@ -1,13 +1,13 @@
 import java.sql.DriverManager;
 import java.sql.Connection;
 public class ConnectionFactory {
-    private String host = "localhost";
-    private String port = "3306";
-    private String db = "20221_fatec_ipi_poo_pessoas";
-    private String user = "root";
-    private String password = "1234";
+    private static String host = "localhost";
+    private static String port = "3306";
+    private static String db = "20221_fatec_ipi_poo_pessoas";
+    private static String user = "root";
+    private static String password = "1234";
 
-    public Connection getConnection() throws Exception{
+    public static Connection getConnection() throws Exception{
         return DriverManager.getConnection(
             String.format(
                 "jdbc:mysql://%s:%s/%s?useTimezone=true&serverTimezone=UTC",

@@ -66,13 +66,31 @@ public class Pessoa {
         }
     }
 
-    public void listar(){
+    public static void listar() throws Exception{
         //1. Especificar o comando SQL (SELECT)
+        String sql = "SELECT * FROM tb_pessoa";
         //2. Abrir uma conexão (usando try-with-resources)
         //3. Preparar o comando
-        //4. Substituir os eventuais placeholders
-        //5. Executar o comando
-        //6. Tratar o resultado (pois ele é uma tabela)
+        try(
+            Connection conexao = ConnectionFactory.getConnection();
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            //4. Substituir os eventuais placeholders
+            //5. Executar o comando
+            java.sql.ResultSet rs = ps.executeQuery();
+            ){            
+            //6. Tratar o resultado (pois ele é uma tabela)
+            while(rs.next()){
+                int codigo = rs.getInt("cod_pessoa");
+                String nome = rs.getString("nome");
+                String fone = rs.getString("fone");
+                String email = rs.getString("email");
+                System.out.printf(
+                    "código: %d, nome: %s, fone: %s, e-mail: %s\n",
+                    codigo, nome, fone, email
+                );
+            }           
+
+        }
     }
 
     public Pessoa (String nome, String fone, String email){

@@ -35,6 +35,7 @@ public class Principal {
                             break;
                         }
                         case 4:
+                            Pessoa.listar();
                             break;
                         case 0:
                             break;
