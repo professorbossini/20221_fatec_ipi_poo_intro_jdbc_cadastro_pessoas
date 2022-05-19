@@ -50,15 +50,35 @@ public class Pessoa {
         }
     }
 
+    public void apagar() throws Exception{
+        //1. Especificar o comando SQL (DELETE por código)
+        String sql = "DELETE FROM tb_pessoa WHERE cod_pessoa = ?";
+        //2. Abrir uma conexão com o MySQL Server (Usando try-with-resources do Java 7)
+        try(
+            Connection conexao = new ConnectionFactory().getConnection();
+            //3. Preparar o comando
+            PreparedStatement ps = conexao.prepareStatement(sql);
+        ){
+            //4. Substituir os placeholders
+            ps.setInt(1, codigo);
+            //5. Executar o comando
+            ps.execute();
+        }
+    }
+
     public Pessoa (String nome, String fone, String email){
+        this(0, nome, fone, email);    
+    }
+
+    public Pessoa(int codigo, String nome, String fone, String email){
+        setCodigo(codigo);
         setNome(nome);
         setFone(fone);
         setEmail(email);
     }
 
-    public Pessoa(int codigo, String nome, String fone, String email){
-        this(nome, fone, email);
-        setCodigo(codigo);
+    public Pessoa(int codigo){
+        this(codigo, null, null, null);
     }
 
     public int getCodigo() {

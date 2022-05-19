@@ -18,7 +18,7 @@ public class Principal {
                             JOptionPane.showMessageDialog(null, "Pessoa cadastrada");
                             break;
                         }
-                        case 2:
+                        case 2:{
                             String nome = JOptionPane.showInputDialog("Digite o nome");
                             String fone = JOptionPane.showInputDialog("Digite o fone");
                             String email = JOptionPane.showInputDialog("Digite o e-mail");
@@ -27,8 +27,13 @@ public class Principal {
                             p.atualizar();
                             JOptionPane.showMessageDialog(null, "Pessoa atualizada");
                             break;
-                        case 3:
+                        }
+                        case 3:{
+                            new Pessoa(
+                                parseInt(JOptionPane.showInputDialog("Digite o código"))
+                            ).apagar();
                             break;
+                        }
                         case 4:
                             break;
                         case 0:
